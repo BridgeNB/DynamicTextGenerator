@@ -21,6 +21,8 @@ public class TextGenerationEngine {
 	private static StringArrayMap map = null;
 	private static int numSentences = 1;
 	
+	
+	
 	/**
 	 * Adds a file to the list of files that the program has been trained on
 	 * 
@@ -207,7 +209,12 @@ public class TextGenerationEngine {
 	 */
 	public static boolean shouldTerminate(String suffix) {
 		// TODO: remove exception and add code here
-		throw new UnsupportedOperationException();
+		//throw new UnsupportedOperationException();
+		if (suffix.equals(".") || suffix.equals("!") || suffix.equals("?")) {
+			return true;
+		}else {
+			return false;
+		}
 	}
 
 	/**
@@ -218,7 +225,8 @@ public class TextGenerationEngine {
 	 */
 	public static String generateSentence(StringArrayMap map) {
 		// TODO: remove exception and add code here
-		throw new UnsupportedOperationException();
+		// throw new UnsupportedOperationException();
+		map.getPrefix();
 	}
 
 	/**

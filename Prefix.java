@@ -12,6 +12,18 @@
  *
  */
 public class Prefix {
+	
+	private int Prelen;
+	
+	private int numPre;
+	private String[] prefix;
+	private int numSuff;
+	private String[] suffix;
+	
+	public static int numStartArray;
+	static private String[] startArray;
+	
+	
 
 	/**
 	 * The array of prefix strings that denote the start of a sentence is an
@@ -23,9 +35,12 @@ public class Prefix {
 	 * program may inexplicably fail (especially if the length of the prefix has
 	 * been changed).
 	 */
+	
 	public static void initializeSentenceStartArray() {
 		// TODO: remove exception and add code here
-		throw new UnsupportedOperationException();
+		// throw new UnsupportedOperationException();
+		startArray = new String[numStartArray];
+		
 	}
 
 	/**
@@ -40,7 +55,8 @@ public class Prefix {
 	 */
 	public static String[] getStartOfSentencePrefixes() {
 		// TODO: remove exception and add code here
-		throw new UnsupportedOperationException();
+		// throw new UnsupportedOperationException();
+		return startArray;
 	}
 
 	/**
@@ -51,7 +67,8 @@ public class Prefix {
 	 */
 	public Prefix(String[] prefixStrings) {
 		// TODO: remove exception and add code here
-		throw new UnsupportedOperationException();
+		//throw new UnsupportedOperationException();
+		prefix = prefixStrings;
 	}
 
 	/**
@@ -61,7 +78,8 @@ public class Prefix {
 	 */
 	public int getNumSuffixes() {
 		// TODO: remove exception and add code here
-		throw new UnsupportedOperationException();
+		// throw new UnsupportedOperationException();
+		return numSuff;
 	}
 
 	/**
@@ -71,7 +89,8 @@ public class Prefix {
 	 */
 	public int getNumPrefixes() {
 		// TODO: remove exception and add code here
-		throw new UnsupportedOperationException();
+		// throw new UnsupportedOperationException();
+		return prefix.length;
 	}
 
 	/**
@@ -83,7 +102,8 @@ public class Prefix {
 	 */
 	public String getPrefixString(int index) {
 		// TODO: remove exception and add code here
-		throw new UnsupportedOperationException();
+		// throw new UnsupportedOperationException();
+		return prefix[index];
 	}
 
 	/**
@@ -95,7 +115,8 @@ public class Prefix {
 	 */
 	public String getSuffixString(int index) {
 		// TODO: remove exception and add code here
-		throw new UnsupportedOperationException();
+		// throw new UnsupportedOperationException();
+		return suffix[index];
 	}
 
 	/**
@@ -113,7 +134,18 @@ public class Prefix {
 	 */
 	public String getRandomSuffix() {
 		// TODO: remove exception and add code here
-		throw new UnsupportedOperationException();
+		// generate a random list
+		// use that value as the index and return the suffix in
+		// that location
+		// throw new UnsupportedOperationException();
+		if (suffix.length == 0) {
+			throw new ArrayIndexOutOfBoundsException();
+		} 
+		
+		int range = getNumSuffixes() + 1;
+		int rm = (int)Math.random() * range;
+		
+		return suffix[rm];
 	}
 
 	/**
@@ -126,7 +158,16 @@ public class Prefix {
 	 */
 	public void addSuffix(String str) {
 		// TODO: remove exception and add code here
-		throw new UnsupportedOperationException();
+		// throw new UnsupportedOperationException();
+		// public static void addTrainedTexts(String filename) {		
+			if ( numSuff >= suffix.length) {
+				String[] temp = new String[2 * suffix.length];
+				for (int i = 0; i < suffix.length; ++i)
+					temp[i] = suffix[i];
+				suffix = temp;
+			}
+			
+			suffix[numSuff++] = str;
 	}
 
 	/**
@@ -139,7 +180,28 @@ public class Prefix {
 	 */
 	public boolean equals(Object obj) {
 		// TODO: remove exception and add code here
-		throw new UnsupportedOperationException();
+		//throw new UnsupportedOperationException();
+		boolean result = true;
+		
+		if (!(obj instanceof Prefix)) {
+			result = false;
+		}
+		
+			Prefix pf = (Prefix)obj;
+			
+		if (this.getNumPrefixes() != pf.getNumPrefixes()) {
+			result = false;
+		}
+		
+		for (int i = 0; i < this.getNumPrefixes(); i++){
+			if (!this.getPrefixString(i).equals(pf.getPrefixString(i))) {
+				result = false;
+				break;
+			}
+		}
+		
+		return result;
+		           
 	}
 
 	/**
@@ -148,6 +210,10 @@ public class Prefix {
 	 */
 	public String toString() {
 		// TODO: remove exception and add code here
-		throw new UnsupportedOperationException();
+		String deString = null;
+		for(int i = 0; i < prefix.length; i++) {
+			deString = deString + getPrefixString(i) + " ";
+		}
+		return deString;
 	}
 }

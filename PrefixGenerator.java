@@ -16,6 +16,8 @@ import java.util.Scanner;
  *
  */
 public class PrefixGenerator {
+	
+	Prefix pf;
 
 	/**
 	 * Using a given map of String[]'s to Prefix objects and the name of the
@@ -52,7 +54,15 @@ public class PrefixGenerator {
 		}
 
 		// TODO: Implement training algorithm
+		
+		StringArrayMap sam = new StringArrayMap();
+		
 
 		text.close();
+	}
+	
+	public static void main (String[] args) {
+		PrefixGenerator pf = new PrefixGenerator();
+		
 	}
 }
